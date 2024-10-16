@@ -1,0 +1,10 @@
+<form action="/update/{{task.0}}" method="POST">
+
+    <input type="text" name="TASK" placeholder="Materia" value="{{task.1}}">
+    <input type="date" name="FECHA_INICIO" placeholder="Fecha inicio" value="{{task.2}}">
+    <input type="date" name="FECHA_FIN" placeholder="Fecha fin" value="{{task.3}}">
+    <textarea name="DESCRIPCION">{{task.4}}</textarea>
+    <button type="submit">
+        Save
+    </button>
+</form>
