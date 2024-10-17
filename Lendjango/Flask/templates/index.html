@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages()  %}
+{% if messages %}
+{% for msg in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{msg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card card-body">
+            <form action="/add_task" method="POST">
+                <div class="form-group">
+                    <input type="text" name="TASK" placeholder="Materia" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="date" name="FECHA_INICIO" placeholder="Fecha inicio" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="date" name="FECHA_FIN" placeholder="Fecha fin" class="form-control">
+                </div>
+                <div class="form-group">
+                    <textarea name="DESCRIPCION" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success btn-block">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <table class="table table-striped table-bordered bg-white">
+            <thead>
+                <tr>
+                    <td>Materia</td>
+                    <td>Fecha de Inicio</td>
+                    <td>Fecha de entrega</td>
+                    <td>Descripcion</td>
+                    <td>Cambios</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>
+                        {{task.1}}
+                    </td>
+                    <td>
+                        {{task.2}}
+                    </td>
+                    <td>
+                        {{task.3}}
+                    </td>
+                    <td>
+                        {{task.4}}
+                    </td>
+                    <td>
+                        <a href="/getTask/{{task.0}}" class="btn btn-primary">Editar</a>
+                        <a href="/delete/{{task.0}}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+        
+                {% endfor%}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+        <form action="/update/{{task.0}}" method="POST">
+
+            <div class="form-group">
+                <input type="text" name="TASK" placeholder="Materia" value="{{task.1}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="date" name="FECHA_INICIO" placeholder="Fecha inicio" value="{{task.2}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="date" name="FECHA_FIN" placeholder="Fecha fin" value="{{task.3}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <textarea name="DESCRIPCION" class="form-control">{{task.4}}</textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-success btn-block">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
